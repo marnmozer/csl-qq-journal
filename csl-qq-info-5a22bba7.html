@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中超直播 · 简明观赛指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            background: #f5f7fa;
+            color: #1c1e24;
+            line-height: 1.7;
+        }
+
+        .hero {
+            background: linear-gradient(138deg, #0b0f18 0%, #1b2536 100%);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            color: #e8edf5;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero .sub {
+            font-size: 1.2rem;
+            color: #a8b5cf;
+            max-width: 600px;
+            margin: 0 auto;
+            border-top: 1px solid #2e3a4e;
+            padding-top: 1.2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        .intro-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+        }
+
+        .intro-card p {
+            font-size: 1.08rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .intro-card strong {
+            color: #0f1c30;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem 1.8rem 2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #eef1f5;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #121826;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h3 span {
+            background: #dde3ed;
+            font-size: 0.85rem;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            color: #1f2a3f;
+            font-weight: 400;
+        }
+
+        .card p, .card ul {
+            color: #374151;
+            font-size: 1rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding: 0.3rem 0 0.3rem 1.2rem;
+            position: relative;
+        }
+
+        .card li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #3b6ea5;
+            font-weight: bold;
+        }
+
+        .highlight-link {
+            color: #1f5090;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .highlight-link:hover {
+            border-bottom-color: #1f5090;
+        }
+
+        .accent-badge {
+            display: inline-block;
+            background: #e7edf8;
+            color: #1f3a5e;
+            font-size: 0.8rem;
+            padding: 0.15rem 0.9rem;
+            border-radius: 30px;
+            margin-right: 0.4rem;
+        }
+
+        .faq-summary {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 2rem 2.5rem;
+            margin: 2.5rem 0 1.5rem;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+        }
+
+        .faq-summary h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            border-left: 5px solid #1f5090;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            color: #0f1a2b;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e9edf2;
+            padding: 1.2rem 0;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1d2b3f;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-item p {
+            color: #3f4a5c;
+            margin: 0;
+        }
+
+        .note-box {
+            background: #f0f4fe;
+            border-radius: 18px;
+            padding: 1.5rem 2rem;
+            margin-top: 2rem;
+            font-size: 0.98rem;
+            border-left: 5px solid #2b6ba4;
+            color: #1b2a40;
+        }
+
+        .note-box a {
+            color: #1a4b7a;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: #6b7a90;
+            border-top: 1px solid #dce2eb;
+            padding-top: 2rem;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2rem; }
+            .hero { padding: 3.5rem 1.2rem 2.8rem; }
+            .container { padding: 1.8rem 1rem 3rem; }
+            .intro-card { padding: 1.8rem 1.2rem; }
+            .card { padding: 1.6rem 1.2rem; }
+            .faq-summary { padding: 1.5rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>中超直播 · 简单开场</h1>
+        <div class="sub">观赛之前，花一分钟理清方向</div>
+    </section>
+
+    <div class="container">
+        <!-- 主视觉 / 简明指南 -->
+        <div class="intro-card">
+            <p>
+                如果你是第一次关注国内足球联赛，或者想找个稳定的线上去处，可以先从 <a href="https://csl-qq.com" class="highlight-link">中超直播</a> 这个方向入手。它不算什么秘密通道，就是一个比较直接的站点 —— 把比赛日程、实时比分和视频流聚合在一起，省去你四处翻找的功夫。页面没什么花哨的引导，但胜在干净，打开之后基本能靠自己找到想看的场次。
+            </p>
+            <p>
+                需要提醒的是，直播链接的可用性有时会受外部影响，建议比赛前十分钟先测试一下信号是否顺畅，别等到开球了才手忙脚乱。
+            </p>
+        </div>
+
+        <!-- 用途卡片 + 适合人群 -->
+        <div class="cards-grid">
+            <div class="card">
+                <h3>📋 用途卡片 <span>日常</span></h3>
+                <ul>
+                    <li>快速查看本轮对阵及开球时间</li>
+                    <li>免注册直接进入直播画面</li>
+                    <li>多数场次提供多线路备选</li>
+                    <li>赛后保留回放片段（非全部）</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>👥 适合人群 <span>参考</span></h3>
+                <ul>
+                    <li>没装体育会员、想临时看一场的球迷</li>
+                    <li>在外用手机快速打开网页的学生 / 上班族</li>
+                    <li>习惯在电脑端多窗口对比赛况的资深观众</li>
+                    <li>偶尔关注中超、不愿下载额外 App 的轻量用户</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>⚙️ 访问提醒</h3>
+                <p>部分网络环境（如公司、校园网）可能会限制流媒体端口，如果遇到黑屏或缓冲失败，可以尝试切换 Wi-Fi 或使用移动数据。另外页面中的广告位比较常见，注意不要误点全屏遮挡区域。</p>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-summary">
+            <h2>常见疑问 · 简短版</h2>
+            <div class="faq-item">
+                <strong>需要注册或付费吗？</strong>
+                <p>目前大部分直播页可以直接观看，无需登录账号。部分线路可能包含第三方平台验证，但整体门槛不高。</p>
+            </div>
+            <div class="faq-item">
+                <strong>画质怎么样？</strong>
+                <p>通常提供标清和高清两个选项，清晰度接近电视台转播，但具体取决于你的网速和所选线路。</p>
+            </div>
+            <div class="faq-item">
+                <strong>错过直播怎么办？</strong>
+                <p>赛后几小时内站内会放出部分场次的录像，但不是每场都有，重要比赛保留概率更高。</p>
+            </div>
+            <div class="faq-item">
+                <strong>手机和电脑都能用吗？</strong>
+                <p>可以。页面自适应布局，手机浏览器直接打开即可，不需要额外安装插件或 App。</p>
+            </div>
+        </div>
+
+        <!-- 自然链接段落 + 提示 -->
+        <div class="note-box">
+            <p>
+                📌 如果你只是想找个地方安静看场球，不折腾会员、不绕弯路，不妨把 <a href="https://csl-qq.com" class="highlight-link">中超直播</a> 放进书签栏。它并不完美，但作为一个聚合型页面，已经足够覆盖大部分观赛需求。另外，开赛前五分钟刷新一下页面，能拿到最新的线路状态。
+            </p>
+        </div>
+
+        <div class="footer-note">
+            页面仅为信息整理，不存储任何视频内容 · 观赛时注意保护个人设备及隐私
+        </div>
+    </div>
+</body>
+</html>
