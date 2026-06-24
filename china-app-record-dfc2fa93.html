@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 – 简明指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f5f7;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #1e1e2a;
+      padding: 2rem 1.2rem;
+    }
+
+    .container {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+
+    /* Hero 简卡 */
+    .hero {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e8eaee;
+      transition: box-shadow 0.2s;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #15171f;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero .sub {
+      max-width: 680px;
+      font-size: 1.1rem;
+      color: #3b3d49;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero .brief-tag {
+      display: inline-block;
+      background: #eef0f4;
+      border-radius: 36px;
+      padding: 0.3rem 1.1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #2c2e3a;
+      border: 1px solid #d9dce2;
+    }
+
+    /* 卡片网格 */
+    .cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      flex: 1 1 calc(33.333% - 1.5rem);
+      min-width: 240px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.6rem 1.4rem 1.8rem;
+      border: 1px solid #e2e5eb;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      border-color: #bcc2cd;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 550;
+      margin-bottom: 0.6rem;
+      color: #1d1f29;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #3f4250;
+    }
+
+    .card .small-note {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #6e7383;
+      border-top: 1px dashed #e2e5eb;
+      padding-top: 0.8rem;
+    }
+
+    /* 特色说明块 (使用建议/场景) */
+    .detail-block {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid #e5e8ee;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      padding: 2rem 2rem 2.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .detail-block h2 {
+      font-weight: 500;
+      font-size: 1.5rem;
+      color: #1c1e28;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #eef0f4;
+    }
+
+    .detail-block ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.8rem;
+    }
+
+    .detail-block li {
+      flex: 1 1 180px;
+      padding-left: 0.2rem;
+      font-size: 0.95rem;
+      color: #2f3342;
+    }
+
+    .detail-block li strong {
+      font-weight: 550;
+      color: #1e202c;
+    }
+
+    /* 提示 / FAQ 摘要区 */
+    .tip-faq {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .tip-card, .faq-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e2e5eb;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+      padding: 1.5rem 1.6rem;
+      flex: 1 1 240px;
+    }
+
+    .tip-card h4, .faq-card h4 {
+      font-weight: 550;
+      font-size: 1rem;
+      color: #20222e;
+      margin-bottom: 0.6rem;
+    }
+
+    .tip-card p, .faq-card p {
+      font-size: 0.9rem;
+      color: #414654;
+    }
+
+    .faq-card .q {
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+      color: #14161f;
+    }
+
+    .faq-card .a {
+      color: #565b6b;
+      margin-bottom: 0.8rem;
+    }
+
+    .faq-card .a:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 可信访问说明 (克制) */
+    .access-note {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e5e8ee;
+      padding: 1.6rem 2rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: #404553;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
+    }
+
+    .access-note strong {
+      font-weight: 550;
+      color: #20222e;
+    }
+
+    .link-sentence {
+      margin: 0.6rem 0 0.2rem;
+      font-size: 0.95rem;
+      color: #2d313f;
+    }
+
+    .link-sentence a {
+      color: #1a4c7a;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #bdc9da;
+      transition: border-color 0.15s;
+    }
+
+    .link-sentence a:hover {
+      border-bottom-color: #1a4c7a;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #dfe2e8;
+      margin: 1.8rem 0 1rem;
+    }
+
+    .footer {
+      font-size: 0.8rem;
+      color: #6f7587;
+      text-align: center;
+      padding: 1.2rem 0 0.5rem;
+      border-top: 1px solid #e4e7ed;
+      margin-top: 1rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      body { padding: 1.2rem; }
+      .hero { padding: 1.8rem 1.2rem; }
+      .hero h1 { font-size: 1.7rem; }
+      .card { flex: 1 1 100%; }
+      .detail-block ul { flex-direction: column; gap: 0.6rem; }
+      .tip-faq { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero 简明摘要 -->
+  <div class="hero">
+    <h1>爱游戏 · 简明指南</h1>
+    <div class="sub">
+      面向日常娱乐场景，聚合轻量、稳定的游戏体验。本文介绍核心亮点、使用建议及访问须知，帮助你快速了解服务边界。
+    </div>
+    <span class="brief-tag">产品说明 · v2 精简</span>
+  </div>
+
+  <!-- 亮点卡片 -->
+  <div class="cards-grid">
+    <div class="card">
+      <h3>即用型集成</h3>
+      <p>无需复杂配置，打开页面即可参与互动。支持主流设备与浏览器，响应延迟经过基础优化。</p>
+      <span class="small-note">基于 Web 技术构建</span>
+    </div>
+    <div class="card">
+      <h3>内容节奏</h3>
+      <p>提供多类型轻量内容，单次参与时长可控。适合碎片时间或短时放松，不强调沉浸负担。</p>
+      <span class="small-note">平均单次约 5–20 分钟</span>
+    </div>
+    <div class="card">
+      <h3>环境提示</h3>
+      <p>建议使用网络稳定的环境访问。部分特性依赖标准浏览器能力，不额外收集隐私数据。</p>
+      <span class="small-note">详见下方访问说明</span>
+    </div>
+  </div>
+
+  <!-- 使用建议 / 场景 (detail-block) -->
+  <div class="detail-block">
+    <h2>使用建议 & 典型场景</h2>
+    <ul>
+      <li><strong>通勤间歇</strong> — 快速进入，不强制注册或登录</li>
+      <li><strong>桌面端 / 平板</strong> — 布局自适应，窗口缩放依旧清晰</li>
+      <li><strong>短时体验</strong> — 每次操作独立，无需连续投入</li>
+      <li><strong>功能预览</strong> — 适合先浏览再根据兴趣深入</li>
+      <li><strong>网络提醒</strong> — 带宽较低时仍可加载核心界面</li>
+    </ul>
+  </div>
+
+  <!-- 可信但克制的访问说明 + 嵌入 a 标签 -->
+  <div class="access-note">
+    <strong>访问说明</strong>
+    <div class="link-sentence">
+      如果你希望了解更多或直接开始，可前往 
+      <a href="https://china-app-igame.com">爱游戏</a> 
+      查看最新内容。该站点基于通用技术标准提供轻量互动，不包含金融、投资、医疗等专业建议。
+    </div>
+    <p style="margin-top: 0.6rem; font-size: 0.85rem;">
+      服务可用性取决于网络环境与设备兼容性，页面内无主动追踪脚本。使用前建议确认浏览器版本为近两年内更新。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要 (两个简洁问答) -->
+  <div class="tip-faq">
+    <div class="faq-card">
+      <h4>常见疑问</h4>
+      <div class="q">是否需要安装额外软件？</div>
+      <div class="a">不需要，全部在浏览器中运行，无需下载客户端。</div>
+      <div class="q">内容更新频率如何？</div>
+      <div class="a">不定期优化与补充，保持基础库稳定。</div>
+    </div>
+    <div class="tip-card">
+      <h4>使用提醒</h4>
+      <p>合理分配时间，避免长时间连续使用。服务本身不含付费强制机制，所有互动均为可选。</p>
+      <p style="margin-top: 0.6rem;">如遇显示异常，可尝试刷新或更换浏览器。</p>
+    </div>
+  </div>
+
+  <hr>
+  <div class="footer">
+    <span>© 简单介绍页 · 信息仅作参考 · 无诱导性表述</span>
+  </div>
+</div>
+</body>
+</html>
